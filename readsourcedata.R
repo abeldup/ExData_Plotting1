@@ -5,7 +5,7 @@
 ##  - Reduces the data to only the dates required
 ##  - Drops rows with no observations
 ## Parameters: prows = number of rows to read from data file (for fast testing)
-## Returns: The cleaned data frame
+## Returns: The cleaned data
 #######################################################################################################################
 
 readSourceData <- function(prows = 0) {
@@ -22,10 +22,10 @@ readSourceData <- function(prows = 0) {
                           nrows=prows, header=TRUE, sep=";", na.strings=c("?"),
                           skip = 66637, columnClasses, comment.char = "")
   }
+  ##Assign column names
   names(alldata) <- c("Date", "Time", "Global_active_power", "Global_reactive_power", 
                       "Voltage", "Global_intensity", 
                       "Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
-  
   ##Convert string columns to date and time
   alldata$DateTime <- strptime(paste(alldata$Date, alldata$Time, sep=" "), 
                                format="%d/%m/%Y %H:%M:%S")
