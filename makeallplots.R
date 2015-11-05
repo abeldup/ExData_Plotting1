@@ -8,5 +8,6 @@ makeAllPlots <- function(pPNG = TRUE) {
   makePlot1(mdata, pPNG)
   makePlot2(mdata, pPNG)
   makePlot3(mdata, pPNG)
+  makePlot4(mdata, pPNG)
   
 }
